@@ -10,7 +10,7 @@ sourcePath="/Users/grimsen/Library/Mobile Documents/iCloud~md~obsidian/Documents
 destinationPath="/Users/grimsen/Library/Mobile Documents/com~apple~CloudDocs/Privat/Blog/grimsen/content"
 
 # Set GitHub Repo
-myrepo="gullfrode/gullfrode.git"
+myrepo="git.github.com:Gullfrode/gullfrode.git"
 
 # Check for required commands
 for cmd in git rsync python3 hugo; do
