@@ -1,5 +1,5 @@
 ---
-title: 2025-09-26
+title: Oppsett Hugo
 draft: "false"
 date: 2025-09-27
 tags:
@@ -208,4 +208,4 @@ git branch -D "$TMP_BRANCH"
 
 echo "Ferdig ✔"
 
-´´´
+```
