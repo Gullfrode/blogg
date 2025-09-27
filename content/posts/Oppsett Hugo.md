@@ -21,6 +21,7 @@ Lim inn innholdet i github
   <summary>📁 Lag Script</summary>
 ```
 mkdir -p ~/bin
+
 nano ~/bin/oppdatergrimsen
 ```
 
@@ -206,4 +207,5 @@ git branch -D "$TMP_BRANCH"
   
 
 echo "Ferdig ✔"
+
 ´´´
