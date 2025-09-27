@@ -23,12 +23,15 @@ Lim inn innholdet i github
 mkdir -p ~/bin
 nano ~/bin/oppdatergrimsen
 ```
+
 ```
 export PATH="$HOME/bin:$PATH"
 ```
+
 ```
 source ~/.bash_profile
 ```
+
 ```
 #!/usr/bin/env bash
 
