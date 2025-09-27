@@ -117,7 +117,7 @@
     "keywords": ["innlegg"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "40"
+    "wordCount": "385"
   }
   </script>
     
@@ -310,7 +310,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-09-27 00:00:00 &#43;0000 UTC">27 September 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+      <time datetime="2025-09-27 00:00:00 &#43;0000 UTC">27 September 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
     
 
     
@@ -334,20 +334,78 @@
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -C &ldquo;<a href="mailto:gullfrode@gmail.com">gullfrode@gmail.com</a>&rdquo;
 cat id_rsa.pub
-Lim inn innholdet i github
-!
-
-
-
-
-
-
-  
-  
-<figure><img src="/images/Pasted%20image%2020250927165320.png" alt="Image" class="mx-auto my-0 rounded-md" />
-</figure>
-</p>
-
+Lim inn innholdet i github</p>
+<details>
+  <summary>📁 Lag Script</summary>
+```bash
+mkdir -p ~/bin
+nano ~/bin/oppdatergrimsen
+```
+```
+export PATH="$HOME/bin:$PATH"
+```
+```
+source ~/.bash_profile
+   ```
+   ```
+   #!/usr/bin/env bash
+<p>set -euo pipefail</p>
+<h3 id="-konfig-" class="relative group">=== KONFIG === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-konfig-" aria-label="Anchor">#</a></span></h3><p>REPO_DIR=&quot;/Users/grimsen/Library/Mobile Documents/com<del>apple</del>CloudDocs/Privat/Blog/blog&quot;</p>
+<h1 id="obsidian-vault" class="relative group">Obsidian-vault <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#obsidian-vault" aria-label="Anchor">#</a></span></h1><p>VAULT_DIR=&quot;/Users/grimsen/Library/Mobile Documents/iCloud<del>md</del>obsidian/Documents/Mi Casa&quot;</p>
+<p>POSTS_DIR=&quot;$VAULT_DIR/Posts&quot;</p>
+<p>ATTACH_DIR=&quot;$VAULT_DIR/_filer&quot;</p>
+<p>REMOTE_URL=&ldquo;<a href="mailto:git@github.com">git@github.com</a>:Gullfrode/blogg.git&rdquo;</p>
+<p>DEPLOY_BRANCH=&ldquo;gh-pages&rdquo;</p>
+<p>TMP_BRANCH=&ldquo;gh-pages-tmp&rdquo;</p>
+<h3 id="-sjekker-" class="relative group">=== SJEKKER === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-sjekker-" aria-label="Anchor">#</a></span></h3><p>for cmd in git rsync python3 hugo; do</p>
+<p>command -v &ldquo;$cmd&rdquo; &gt;/dev/null 2&gt;&amp;1 || { echo &ldquo;Mangler $cmd i PATH&rdquo;; exit 1; }</p>
+<p>done</p>
+<p>[ -d &ldquo;$REPO_DIR&rdquo; ] || { echo &ldquo;Finner ikke REPO_DIR: $REPO_DIR&rdquo;; exit 1; }</p>
+<p>[ -d &ldquo;$POSTS_DIR&rdquo; ] || { echo &ldquo;Finner ikke POSTS_DIR: $POSTS_DIR&rdquo;; exit 1; }</p>
+<p>[ -d &ldquo;$ATTACH_DIR&rdquo; ] || { echo &ldquo;Finner ikke ATTACH_DIR: $ATTACH_DIR&rdquo;; exit 1; }</p>
+<h3 id="-kjør-i-repo-" class="relative group">=== KJØR I REPO === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-kj%c3%b8r-i-repo-" aria-label="Anchor">#</a></span></h3><p>cd &ldquo;$REPO_DIR&rdquo;</p>
+<h1 id="git--riktig-origin" class="relative group">Git + riktig origin <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#git--riktig-origin" aria-label="Anchor">#</a></span></h1><p>[ -d .git ] || git init</p>
+<p>if git remote | grep -q &lsquo;^origin$&rsquo;; then</p>
+<p>git remote set-url origin &ldquo;$REMOTE_URL&rdquo;</p>
+<p>else</p>
+<p>git remote add origin &ldquo;$REMOTE_URL&rdquo;</p>
+<p>fi</p>
+<h1 id="sørg-for-main" class="relative group">Sørg for main <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#s%c3%b8rg-for-main" aria-label="Anchor">#</a></span></h1><p>if git rev-parse &ndash;verify main &gt;/dev/null 2&gt;&amp;1; then</p>
+<p>git checkout main</p>
+<p>else</p>
+<p>git checkout -b main</p>
+<p>fi</p>
+<h3 id="-sync-obsidian--hugo-" class="relative group">=== SYNC OBSIDIAN → HUGO === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-sync-obsidian--hugo-" aria-label="Anchor">#</a></span></h3><p>CONTENT_DIR=&quot;$REPO_DIR/content/posts&quot;</p>
+<p>STATIC_IMAGES_DIR=&quot;$REPO_DIR/static/images&quot;</p>
+<p>mkdir -p &ldquo;$CONTENT_DIR&rdquo; &ldquo;$STATIC_IMAGES_DIR&rdquo;</p>
+<p>echo &ldquo;Rsync fra Obsidian/Posts → Hugo/content &hellip;&rdquo;</p>
+<p>rsync -av &ndash;delete &ldquo;$POSTS_DIR/&rdquo; &ldquo;$CONTENT_DIR/&rdquo;</p>
+<h3 id="-bilderlenker-" class="relative group">=== BILDER/LENKER === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-bilderlenker-" aria-label="Anchor">#</a></span></h3><p>[ -f &ldquo;$REPO_DIR/images.py&rdquo; ] || { echo &ldquo;images.py mangler i $REPO_DIR&rdquo;; exit 1; }</p>
+<p>python3 &ldquo;$REPO_DIR/images.py&rdquo; \</p>
+<p>&ndash;posts &ldquo;$CONTENT_DIR&rdquo; \</p>
+<p>&ndash;attachments &ldquo;$ATTACH_DIR&rdquo; \</p>
+<p>&ndash;static-images &ldquo;$STATIC_IMAGES_DIR&rdquo;</p>
+<h3 id="-hugo-bygg-" class="relative group">=== HUGO BYGG === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-hugo-bygg-" aria-label="Anchor">#</a></span></h3><p>echo &ldquo;Bygger Hugo &hellip;&rdquo;</p>
+<p>hugo</p>
+<p>[ -d public ] || { echo &ldquo;public/ mangler (build feilet)&rdquo;; exit 1; }</p>
+<h3 id="-legg-til-cname-" class="relative group">=== legg til CNAME === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-legg-til-cname-" aria-label="Anchor">#</a></span></h3><p>echo &ldquo;blogg.grimsen.com&rdquo; &gt; public/CNAME</p>
+<h3 id="-commit--push-main-" class="relative group">=== COMMIT &amp; PUSH main === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-commit--push-main-" aria-label="Anchor">#</a></span></h3><p>if ! git diff &ndash;quiet || ! git diff &ndash;cached &ndash;quiet; then git add .; fi</p>
+<p>if ! git diff &ndash;cached &ndash;quiet; then</p>
+<p>git commit -m &ldquo;Auto: oppdateringer $(date +&rsquo;%Y-%m-%d %H:%M:%S&rsquo;)&rdquo;</p>
+<p>fi</p>
+<p>if git rev-parse &ndash;abbrev-ref &ndash;symbolic-full-name @{u} &gt;/dev/null 2&gt;&amp;1; then</p>
+<p>git push</p>
+<p>else</p>
+<p>git branch -M main</p>
+<p>git push -u origin main</p>
+<p>fi</p>
+<h3 id="-deploy-til-gh-pages-" class="relative group">=== DEPLOY TIL gh-pages === <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#-deploy-til-gh-pages-" aria-label="Anchor">#</a></span></h3><p>echo &ldquo;Deploy til $DEPLOY_BRANCH &hellip;&rdquo;</p>
+<p>git branch -D &ldquo;$TMP_BRANCH&rdquo; &gt;/dev/null 2&gt;&amp;1 || true</p>
+<p>git subtree split &ndash;prefix public -b &ldquo;$TMP_BRANCH&rdquo;</p>
+<p>git push origin &ldquo;$TMP_BRANCH&rdquo;:&quot;$DEPLOY_BRANCH&quot; &ndash;force</p>
+<p>git branch -D &ldquo;$TMP_BRANCH&rdquo;</p>
+<p>echo &ldquo;Ferdig ✔&rdquo;</p>
+<pre tabindex="0"><code></code></pre>
       </div>
     </section>
     <footer class="max-w-prose pt-8 print:hidden">
@@ -368,40 +426,6 @@ Lim inn innholdet i github
       
 
       
-  
-    
-    
-    
-    <div class="pt-8">
-      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
-      <div class="flex justify-between pt-3">
-        <span>
-          
-            <a class="group flex" href="https://blogg.grimsen.com/posts/2025-09-27-09-85-/">
-              <span
-                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&larr;</span
-                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >2025-09-27</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2025-09-27 00:00:00 &#43;0000 UTC">27 September 2025</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-        </span>
-      </div>
-    </div>
   
 
 

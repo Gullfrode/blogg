@@ -30,3 +30,6 @@ summaryLength = 0
 
 [params]
   mainSections = ["posts"]
+
+[markup.goldmark.renderer]
+unsafe = true
