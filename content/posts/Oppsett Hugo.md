@@ -9,4 +9,5 @@ cd ~/.ssh
  ssh-keygen -t rsa -b 4096 -C "gullfrode@gmail.com"
 cat id_rsa.pub
 Lim inn innholdet i github
-![[Pasted image 20250927104628.png]]
+
+![[Pasted image 20250927115232.png]]
