@@ -1,36 +1,53 @@
-import os
-import re
-import shutil
+#!/usr/bin/env python3
+import os, re, shutil, argparse
+from pathlib import Path
+from urllib.parse import quote
 
-# Paths
-posts_dir = "/Users/grimsen/Library/Mobile Documents/iCloud~md~obsidian/Documents/Mi Casa/Posts"
-attachments_dir = "/Users/grimsen/Library/Mobile Documents/iCloud~md~obsidian/Documents/Mi Casa/_filer/Users/grimsen/Library/Mobile Documents/iCloud~md~obsidian/Documents/Mi Casa/P"
-static_images_dir = "/Users/grimsen/Library/Mobile Documents/com~apple~CloudDocs/Privat/Blog/grimsen/static/images/"
+def main():
+    p = argparse.ArgumentParser(description="Oppdater Obsidian-bildelinker for Hugo og kopier bilder.")
+    p.add_argument("--posts", required=True, help="Hugo content/-mappe")
+    p.add_argument("--attachments", required=True, help="Obsidian _filer/-mappe")
+    p.add_argument("--static-images", required=True, help="Hugo static/images/-mappe")
+    args = p.parse_args()
 
-# Step 1: Process each markdown file in the posts directory
-for filename in os.listdir(posts_dir):
-    if filename.endswith(".md"):
-        filepath = os.path.join(posts_dir, filename)
-        
-        with open(filepath, "r") as file:
-            content = file.read()
-        
-        # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)
-        images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
-        
-        # Step 3: Replace image links and ensure URLs are correctly formatted
-        for image in images:
-            # Prepare the Markdown-compatible link with %20 replacing spaces
-            markdown_image = f"![Image Description](/images/{image.replace(' ', '%20')})"
-            content = content.replace(f"[[{image}]]", markdown_image)
-            
-            # Step 4: Copy the image to the Hugo static/images directory if it exists
-            image_source = os.path.join(attachments_dir, image)
-            if os.path.exists(image_source):
-                shutil.copy(image_source, static_images_dir)
+    posts_dir = Path(args.posts)
+    attachments_dir = Path(args.attachments)
+    static_images_dir = Path(args.static_images)
+    if not posts_dir.is_dir():       raise SystemExit(f"Posts finnes ikke: {posts_dir}")
+    if not attachments_dir.is_dir(): raise SystemExit(f"Attachments finnes ikke: {attachments_dir}")
+    static_images_dir.mkdir(parents=True, exist_ok=True)
 
-        # Step 5: Write the updated content back to the markdown file
-        with open(filepath, "w") as file:
-            file.write(content)
+    # Matche [[fil.png]] og ![[fil.jpg]] (ev. undermapper)
+    pat = re.compile(r"!?\[\[([^\]]+\.(?:png|jpg|jpeg))\]\]", re.IGNORECASE)
 
-print("Markdown files processed and images copied successfully.")
+    for md_path in posts_dir.glob("**/*.md"):
+        text = md_path.read_text(encoding="utf-8")
+        matches = pat.findall(text)
+        if not matches:
+            continue
+
+        for rel in matches:
+            rel_clean = rel.strip().lstrip("/")
+            # primært søk i _filer med samme relative bane
+            src = attachments_dir / rel_clean
+            if not src.exists():
+                # fallback: kun filnavn (flatt)
+                src = attachments_dir / Path(rel_clean).name
+
+            # Erstatt til standard markdown-bildesyntaks og legg i /images/
+            url_part = quote(Path(rel_clean).name)
+            replacement = f"![Image](/images/{url_part})"
+            # erstatt både [[x]] og ![[x]]
+            text = text.replace(f"[[{rel}]]", replacement).replace(f"![[{rel}]]", replacement)
+
+            if src.exists() and src.is_file():
+                dst = static_images_dir / Path(rel_clean).name
+                if not dst.exists() or os.path.getmtime(src) > os.path.getmtime(dst):
+                    shutil.copy2(src, dst)
+
+        md_path.write_text(text, encoding="utf-8")
+
+    print("Markdown oppdatert og bilder kopiert ✔")
+
+if __name__ == "__main__":
+    main()
