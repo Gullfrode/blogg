@@ -1,9 +1,9 @@
-languageCode = "en"
-languageName = "English"
+languageCode = "nb"
+languageName = "Norsk (Bokmål)"
 languageDirection = "ltr"
 weight = 1
 
-title = "Congo"
+title = "Grimsens blogg"
 # copyright = "Copy, _right?_ :thinking_face:"
 
 [params]

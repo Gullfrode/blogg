@@ -5,7 +5,7 @@ theme = "congo"
 
 baseURL = "https://blogg.grimsen.com/"
 title = "Grimsens blogg"
-defaultContentLanguage = "en"
+defaultContentLanguage = "nb"
 
 enableRobotsTXT = true
 summaryLength = 0
