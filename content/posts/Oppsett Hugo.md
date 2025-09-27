@@ -1,4 +1,10 @@
-
+---
+title: 2025-09-26
+draft: "false"
+date: 2025-09-27
+tags:
+  - innlegg
+---
 ###### Innstaller Hugo
 brew install hugo
 ###### Sync
