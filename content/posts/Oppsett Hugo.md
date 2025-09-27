@@ -19,7 +19,7 @@ Lim inn innholdet i github
 
 <details>
   <summary>📁 Lag Script</summary>
-```bash
+```
 mkdir -p ~/bin
 nano ~/bin/oppdatergrimsen
 ```
@@ -28,9 +28,9 @@ export PATH="$HOME/bin:$PATH"
 ```
 ```
 source ~/.bash_profile
-   ```
-   ```
-   #!/usr/bin/env bash
+```
+```
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -203,4 +203,4 @@ git branch -D "$TMP_BRANCH"
   
 
 echo "Ferdig ✔"
-```
+´´´
