@@ -1,4 +1,12 @@
 ###### Innstaller Hugo
 brew install hugo
 ###### Sync
-rsync -av --delete /Users/grimsen/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Mi\ Casa/Post  /Users/grimsen/Library/Mobile\ Documents/com\~apple\~CloudDocs/Privat/Blog/blog/content/posts
+rsync -av --delete fra til
+
+###### Lag side på github, og legg inn nøkkel fra maskina
+generer ssh-key
+cd ~/.ssh
+ ssh-keygen -t rsa -b 4096 -C "gullfrode@gmail.com"
+cat id_rsa.pub
+Lim inn innholdet i github
+![[Pasted image 20250927104628.png]]
