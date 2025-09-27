@@ -4,11 +4,15 @@
   <url>
     <loc>/oppsett-hugo/</loc>
   </url><url>
+    <loc>/posts/oppsett-hugo/</loc>
+  </url><url>
     <loc>/test/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>
     <loc>/</loc>
+  </url><url>
+    <loc>/posts/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>
