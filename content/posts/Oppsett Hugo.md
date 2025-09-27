@@ -10,4 +10,4 @@ cd ~/.ssh
 cat id_rsa.pub
 Lim inn innholdet i github
 
-![[Pasted image 20250927115232.png]]
+!![Image Description](/images/Pasted%20image%2020250927115232.png)
