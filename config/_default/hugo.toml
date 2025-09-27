@@ -26,3 +26,6 @@ summaryLength = 0
 [services]
   [services.x]
     disableInlineCSS = true
+ 
+[params]
+  mainSections = ["posts"]
