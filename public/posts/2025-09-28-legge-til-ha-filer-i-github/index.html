@@ -117,7 +117,7 @@
     "keywords": ["innlegg"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "212"
+    "wordCount": "296"
   }
   </script>
     
@@ -245,7 +245,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-09-28 00:00:00 &#43;0000 UTC">28 september 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Lesetid">1 min</span>
+      <time datetime="2025-09-28 00:00:00 &#43;0000 UTC">28 september 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Lesetid">2 min</span>
     
 
     
@@ -264,22 +264,161 @@
       
       <div class="min-h-0 min-w-0 max-w-prose grow">
         <p>nano gitignore</p>
-<pre tabindex="0"><code>nano .gitignore
+<p>nano .gitignore</p>
+<pre tabindex="0"><code># ta med
+
 !*.yaml
+
 !.gitignore
+
 !*.md
+
 !*.sh
+
 !*.js*
-#1.ssh/
-#lid_rsa*
+
+# Ignorer alt i .storage
+
+.storage/**
+
+  
+
+# Men behold selve mappa og disse filene, inputs fra gui og dashbord:
+
+!.storage/
+
+!.storage/lovelace
+
+!.storage/lovelace_dashboards
+
+!.storage/lovelace_resources
+
+!.storage/lovelace.dashboard_responsive
+
+!.storage/input_boolean
+
+!.storage/input_button
+
+!.storage/input_datetime
+
+!.storage/input_number
+
+!.storage/input_select
+
+!.storage/input_text
+
+#Ta med nodered
+
 !node-red/
-secrets. yamı
-•ssh
+
+#Ikke ta med
+
+.cloud/
+
+.ssh/
+
+appdaemon/
+
+blueprints/
+
+custom_components/
+
+deps/
+
+esphome/
+
+glances/
+
+image/
+
+model_cache/
+
+packages/
+
+  
+
+scripts/
+
+themes/
+
+tts/
+
+www/
+
+zigbee2mqtt/
+
+secrets.yamı
+
+.exports
+
+.HA_VERSION
+
+.ios_conf
+
+.jwt_secret
+
+.logi_cache.pickle
+
+.mealie_token
+
+.ps4-games.C863F19FEC5A_4341.json
+
+.sonoff.json.spotify-token-logi_cache.timeline
+
+.timeline
+
+.vacuum
+
+.xbox-token.json
+
+  
+
 •storage
+
 •cloud
+
 -google. token
-home-assistant.1og*
+
+backup_config.yaml
+
+backup.db
+
+frigate.db
+
+frigate.db-wal
+
+frigate.yml
+
+ha_shell.log
+
+home-assistant.log
+
+home-assistant.log.1
+
 id_rsa*
+
+home-assistant_v2.*
+
+music_assistant.db
+
+zigbee.db
+
+zwcfg_0xfa9afacb.xml
+
+zwscene.xml
+
+home-assistant.log*
+
+*.log
+
+  
+  
+
+# ignore logs ekstra sikkerhet
+
+home-assistant.log*
+
+*.log
 </code></pre><p>Lag et nytt repository på github
 logg inn via ssh på ha
 Lag nøkkel i /root/config/.ssh</p>
@@ -290,7 +429,7 @@ ssh-keygen -t rsa -b 4096 -C  &#34;eposten@din.no&#34;
 <p>installer git( i root/config)</p>
 <pre tabindex="0"><code>git init
 git add .
-git -m &#34;min første oppload&#34;
+git commit -m &#34;min første oppload&#34;
 </code></pre><p>Legg til repository</p>
 <pre tabindex="0"><code>git remote add origin git@github.com:Brukernavngithub/repository.git
 </code></pre><p>Definer hvor nøkkel er</p>

@@ -6,25 +6,164 @@ tags:
 title: Legge til HA-filer i github
 ---
  nano gitignore
-```
-nano .gitignore
-!*.yaml
-!.gitignore
-!*.md
-!*.sh
-!*.js*
-#1.ssh/
-#lid_rsa*
-!node-red/
-secrets. yamı
-•ssh
-•storage
-•cloud
--google. token
-home-assistant.1og*
-id_rsa*
-```
 
+nano .gitignore
+```
+# ta med
+
+!*.yaml
+
+!.gitignore
+
+!*.md
+
+!*.sh
+
+!*.js*
+
+# Ignorer alt i .storage
+
+.storage/**
+
+  
+
+# Men behold selve mappa og disse filene, inputs fra gui og dashbord:
+
+!.storage/
+
+!.storage/lovelace
+
+!.storage/lovelace_dashboards
+
+!.storage/lovelace_resources
+
+!.storage/lovelace.dashboard_responsive
+
+!.storage/input_boolean
+
+!.storage/input_button
+
+!.storage/input_datetime
+
+!.storage/input_number
+
+!.storage/input_select
+
+!.storage/input_text
+
+#Ta med nodered
+
+!node-red/
+
+#Ikke ta med
+
+.cloud/
+
+.ssh/
+
+appdaemon/
+
+blueprints/
+
+custom_components/
+
+deps/
+
+esphome/
+
+glances/
+
+image/
+
+model_cache/
+
+packages/
+
+  
+
+scripts/
+
+themes/
+
+tts/
+
+www/
+
+zigbee2mqtt/
+
+secrets.yamı
+
+.exports
+
+.HA_VERSION
+
+.ios_conf
+
+.jwt_secret
+
+.logi_cache.pickle
+
+.mealie_token
+
+.ps4-games.C863F19FEC5A_4341.json
+
+.sonoff.json.spotify-token-logi_cache.timeline
+
+.timeline
+
+.vacuum
+
+.xbox-token.json
+
+  
+
+•storage
+
+•cloud
+
+-google. token
+
+backup_config.yaml
+
+backup.db
+
+frigate.db
+
+frigate.db-wal
+
+frigate.yml
+
+ha_shell.log
+
+home-assistant.log
+
+home-assistant.log.1
+
+id_rsa*
+
+home-assistant_v2.*
+
+music_assistant.db
+
+zigbee.db
+
+zwcfg_0xfa9afacb.xml
+
+zwscene.xml
+
+home-assistant.log*
+
+*.log
+
+  
+  
+
+# ignore logs ekstra sikkerhet
+
+home-assistant.log*
+
+*.log
+```
 
 Lag et nytt repository på github
 logg inn via ssh på ha
@@ -42,7 +181,7 @@ installer git( i root/config)
 ```
 git init
 git add .
-git -m "min første oppload"
+git commit -m "min første oppload"
 ```
 Legg til repository
 ```
