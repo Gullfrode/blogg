@@ -117,7 +117,7 @@
     "keywords": ["innlegg"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "217"
+    "wordCount": "212"
   }
   </script>
     
@@ -245,7 +245,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-09-28 00:00:00 &#43;0000 UTC">28 september 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Lesetid">2 min</span>
+      <time datetime="2025-09-28 00:00:00 &#43;0000 UTC">28 september 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Lesetid">1 min</span>
     
 
     
@@ -263,9 +263,8 @@
     <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
       
       <div class="min-h-0 min-w-0 max-w-prose grow">
-        <details>
-  <summary>📁 nano gitignore</summary>
-nano .gitignore
+        <p>nano gitignore</p>
+<pre tabindex="0"><code>nano .gitignore
 !*.yaml
 !.gitignore
 !*.md
@@ -281,7 +280,7 @@ secrets. yamı
 -google. token
 home-assistant.1og*
 id_rsa*
-<p>Lag et nytt repository på github
+</code></pre><p>Lag et nytt repository på github
 logg inn via ssh på ha
 Lag nøkkel i /root/config/.ssh</p>
 <pre tabindex="0"><code>mkdir -p /root/config/.ssh
@@ -294,13 +293,11 @@ git add .
 git -m &#34;min første oppload&#34;
 </code></pre><p>Legg til repository</p>
 <pre tabindex="0"><code>git remote add origin git@github.com:Brukernavngithub/repository.git
-</code></pre><details>
-  <summary>📁 Definer hvor nøkkel er</summary>
-git config core.sshCommand "ssh -i /root/config/.ssh/id_rsa -F /dev/null"
-<details>
-  <summary>📁 Kopier ut nøkkel og identifiser på github</summary>
-cat /root/config/.ssh/id_rsa.pub
-<p>!
+</code></pre><p>Definer hvor nøkkel er</p>
+<pre tabindex="0"><code>git config core.sshCommand &#34;ssh -i /root/config/.ssh/id_rsa -F /dev/null&#34;
+</code></pre><p>Kopier ut nøkkel og identifiser på github</p>
+<pre tabindex="0"><code>cat /root/config/.ssh/id_rsa.pub
+</code></pre><p>!
 
 
 
@@ -311,26 +308,22 @@ cat /root/config/.ssh/id_rsa.pub
   
 <figure><img src="/images/Pasted%20image%2020250928102507.png" alt="Image" class="mx-auto my-0 rounded-md" />
 </figure>
-
-git push -u origin master</p>
-<details>
+</p>
+<pre tabindex="0"><code>git push -u origin master
+</code></pre><details>
   <summary>📁 Lag shell command og automasjon</summary>
-lag ei fil til shell command i config
-nano pushupdates.sh
-git add .
-git commit -m "config files on `date +'%d-%m-%Y %H:%M:%S'`"
+<p>lag ei fil til shell command i config</p>
+<p>nano pushupdates.sh</p>
+<pre tabindex="0"><code>git add .
+git commit -m &#34;config files on `date +&#39;%d-%m-%Y %H:%M:%S&#39;`&#34;
 git push -u origin master
-Gjør script kjørbart
-chmod +x pushupdates.sh
-Gjør det kjørbart fra shell command
-git config core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa -F /dev/null'
-<details>
-  <summary>📁 Lag automasjon</summary>
-alias: Github push
-description: ""
+</code></pre><h6 id="gjør-script-kjørbart" class="relative group">Gjør script kjørbart <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#gj%c3%b8r-script-kj%c3%b8rbart" aria-label="Anchor">#</a></span></h6><pre tabindex="0"><code>chmod +x pushupdates.sh
+</code></pre><h6 id="gjør-det-kjørbart-fra-shell-command" class="relative group">Gjør det kjørbart fra shell command <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#gj%c3%b8r-det-kj%c3%b8rbart-fra-shell-command" aria-label="Anchor">#</a></span></h6><pre tabindex="0"><code>git config core.sshCommand &#39;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa -F /dev/null&#39;
+</code></pre><h6 id="lag-automasjon" class="relative group">Lag automasjon <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#lag-automasjon" aria-label="Anchor">#</a></span></h6><pre tabindex="0"><code>alias: Github push
+description: 
 triggers:
   - trigger: time
-    at: "01:00:00"
+    at: &#34;01:00:00&#34;
     weekday:
       - mon
       - tue
@@ -344,7 +337,7 @@ actions:
   - action: shell_command.pushupdates_github
     data: {}
 mode: single
-
+</code></pre>
       </div>
     </section>
     <footer class="max-w-prose pt-8 print:hidden">
