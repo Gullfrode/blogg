@@ -5,6 +5,9 @@ date: 2025-09-28
 tags:
   - innlegg
 ---
+
+<details>
+  <summary>📁 nano gitignore</summary>
 nano .gitignore
 ```
 !*.yaml

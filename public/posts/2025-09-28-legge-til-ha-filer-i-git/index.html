@@ -117,7 +117,7 @@
     "keywords": ["innlegg"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "188"
+    "wordCount": "184"
   }
   </script>
     
@@ -263,102 +263,82 @@
     <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
       
       <div class="min-h-0 min-w-0 max-w-prose grow">
-        <p>nano .gitignore</p>
-<pre tabindex="0"><code>!*.yaml
-
-!.gitignore
-
-!*.md
-
-!*.sh
-
-!*.js*
-
-  
-
-#1.ssh/
-
-#lid_rsa*
-
-  
-
-!node-red/
-
-  
-
-secrets. yamı
-
-  
-
-•ssh
-
-•storage
-
-•cloud
-
--google. token
-
-home-assistant.1og*
-
-id_rsa*
-</code></pre><p>Lag et nytt repository på github
+        <details>
+  <summary>📁 nano gitignore</summary>
+nano .gitignore
+```
+!*.yaml
+<p>!.gitignore</p>
+<p>!*.md</p>
+<p>!*.sh</p>
+<p>!<em>.js</em></p>
+<p>#1.ssh/</p>
+<p>#lid_rsa*</p>
+<p>!node-red/</p>
+<p>secrets. yamı</p>
+<p>•ssh</p>
+<p>•storage</p>
+<p>•cloud</p>
+<p>-google. token</p>
+<p>home-assistant.1og*</p>
+<p>id_rsa*</p>
+<pre tabindex="0"><code>
+Lag et nytt repository på github
 logg inn via ssh på ha
 Lag nøkkel i /root/config/.ssh
 mkdir -p /root/config/.ssh
 cd /root/config/.ssh
-ssh-keygen -t rsa -b 4096 -C  &ldquo;<a href="mailto:eposten@din.no">eposten@din.no</a>&rdquo;
-lagre i /root/config/.ssh</p>
-<p>installer git( i roo/config)</p>
-<pre tabindex="0"><code>git init
+ssh-keygen -t rsa -b 4096 -C  &#34;eposten@din.no&#34;
+lagre i /root/config/.ssh
+
+installer git( i roo/config)
+</code></pre><p>git init
 git add .
-git -m &#34;min første oppload&#34;
-</code></pre><p>Legg til repository</p>
-<pre tabindex="0"><code>git remote add origin git@github.com:Gullfrode/i7.git
-</code></pre><h6 id="definer-hvor-nøkkel-er" class="relative group">Definer hvor nøkkel er <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#definer-hvor-n%c3%b8kkel-er" aria-label="Anchor">#</a></span></h6><pre tabindex="0"><code>git config core.sshCommand &#34;ssh -i /root/config/.ssh/id_rsa -F /dev/null&#34;
-</code></pre><p>Kopier ut nøkkel og identifiser på github</p>
-<pre tabindex="0"><code>cat /root/config/.ssh/id_rsa.pub
-</code></pre><p>!
-
-
-
-
-
-
-  
-  
-<figure><img src="/images/Pasted%20image%2020250928102507.png" alt="Image" class="mx-auto my-0 rounded-md" />
-</figure>
-
-git push -u origin master</p>
-<p>lag ei fil til shell command i config
-nano pushupdates.sh</p>
-<pre tabindex="0"><code>git add .
-git commit -m &#34;config files on `date +&#39;%d-%m-%Y %H:%M:%S&#39;`&#34;
+git -m &ldquo;min første oppload&rdquo;</p>
+<pre tabindex="0"><code>Legg til repository
+</code></pre><p>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:Gullfrode/i7.git</p>
+<pre tabindex="0"><code>
+###### Definer hvor nøkkel er
+</code></pre><p>git config core.sshCommand &ldquo;ssh -i /root/config/.ssh/id_rsa -F /dev/null&rdquo;</p>
+<pre tabindex="0"><code>Kopier ut nøkkel og identifiser på github
+</code></pre><p>cat /root/config/.ssh/id_rsa.pub</p>
+<pre tabindex="0"><code>!![Image](/images/Pasted%20image%2020250928102507.png)
 git push -u origin master
-</code></pre><p>Gjør script kjørbart</p>
-<pre tabindex="0"><code>chmod +x pushupdates.sh
-</code></pre><p>Gjør det kjørbart fra shell command</p>
-<pre tabindex="0"><code>git config core.sshCommand &#39;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa -F /dev/null&#39;
-</code></pre><p>Lag automasjon</p>
-<pre tabindex="0"><code>alias: Github push
-description: &#34;&#34;
-triggers:
-  - trigger: time
-    at: &#34;01:00:00&#34;
-    weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-      - sun
+
+lag ei fil til shell command i config
+nano pushupdates.sh
+</code></pre><p>git add .
+git commit -m &ldquo;config files on <code>date +'%d-%m-%Y %H:%M:%S'</code>&rdquo;
+git push -u origin master</p>
+<pre tabindex="0"><code>Gjør script kjørbart
+</code></pre><p>chmod +x pushupdates.sh</p>
+<pre tabindex="0"><code>Gjør det kjørbart fra shell command
+</code></pre><p>git config core.sshCommand &lsquo;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa -F /dev/null&rsquo;</p>
+<pre tabindex="0"><code>Lag automasjon
+</code></pre><p>alias: Github push
+description: &quot;&quot;
+triggers:</p>
+<ul>
+<li>trigger: time
+at: &ldquo;01:00:00&rdquo;
+weekday:
+<ul>
+<li>mon</li>
+<li>tue</li>
+<li>wed</li>
+<li>thu</li>
+<li>fri</li>
+<li>sat</li>
+<li>sun
 conditions: []
-actions:
-  - action: shell_command.pushupdates_github
-    data: {}
-mode: single
-</code></pre>
+actions:</li>
+</ul>
+</li>
+<li>action: shell_command.pushupdates_github
+data: {}
+mode: single</li>
+</ul>
+<pre tabindex="0"><code></code></pre>
       </div>
     </section>
     <footer class="max-w-prose pt-8 print:hidden">

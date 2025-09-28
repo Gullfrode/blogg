@@ -10,7 +10,8 @@ brew install hugo
 ###### Sync
 rsync -av --delete fra til
 
-###### Lag side på github, og legg inn nøkkel fra maskina
+<details>
+  <summary>📁 Lag side på github, og lim inn nøkkel fra maskina</summary>
 generer ssh-key
 cd ~/.ssh
  ssh-keygen -t rsa -b 4096 -C "gullfrode@gmail.com"
