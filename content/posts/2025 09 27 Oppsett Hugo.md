@@ -1,5 +1,5 @@
 ---
-title: Oppsett Hugo
+title: 2025 09 27 Oppsett Hugo
 draft: "false"
 date: 2025-09-27
 tags:
