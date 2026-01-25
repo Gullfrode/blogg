@@ -4,13 +4,6 @@
   
     
       <url>
-            <loc>https://blogg.grimsen.com/posts/2026-01-01-oppsett-hugo-ny-mac/</loc>
-            <lastmod>2026-01-01T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-      <url>
             <loc>https://blogg.grimsen.com/</loc>
             <lastmod>2026-01-01T00:00:00+00:00</lastmod>
             <xhtml:link
@@ -30,6 +23,13 @@
   
     
       <url>
+            <loc>https://blogg.grimsen.com/posts/2026-01-01-oppsett-hugo-ny-mac/</loc>
+            <lastmod>2026-01-01T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
             <loc>https://blogg.grimsen.com/posts/</loc>
             <lastmod>2026-01-01T00:00:00+00:00</lastmod>
           </url>
@@ -41,6 +41,12 @@
       <url>
             <loc>https://blogg.grimsen.com/posts/2025-09-27-oppsett-hugo/</loc>
             <lastmod>2025-09-27T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>https://blogg.grimsen.com/posts/2026-01-01-altiboks_udmp/</loc>
           </url>
     
   

@@ -1,5 +1,5 @@
 ---
-title: 2026 01 01 Oppsett Hugo (ny Mac)
+title: Oppsett Hugo (ny Mac)
 draft: false
 date: 2026-01-01T00:00:00
 tags:
